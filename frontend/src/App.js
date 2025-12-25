@@ -23,6 +23,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
         </Routes>
         <Footer />
+        <Toaster />
       </div>
     </BrowserRouter>
   );
