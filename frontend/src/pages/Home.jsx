@@ -152,20 +152,20 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Services Preview */}
-      <section className="py-16 lg:py-24 bg-slate-50">
+      {/* Services Preview with 3D Card Effects */}
+      <section className="py-16 lg:py-24 bg-slate-50" id="services" data-animate>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
+            <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4 animate-slide-up">
               Our Services
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto animate-slide-up" style={{ animationDelay: '0.1s' }}>
               Comprehensive technology solutions tailored to your business needs
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {services.map((service) => {
+            {services.map((service, index) => {
               const IconComponent = service.icon === 'GraduationCap' ? Users : 
                                    service.icon === 'Code2' ? Zap :
                                    service.icon === 'Server' ? TrendingUp : Users;
@@ -174,17 +174,29 @@ const Home = () => {
                 <Link
                   key={service.id}
                   to="/services"
-                  className="group bg-white rounded-xl p-6 shadow-sm hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 border border-slate-200"
+                  className="card-3d group bg-white rounded-xl p-6 shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-200 relative overflow-hidden"
+                  style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                    <IconComponent className="text-white" size={24} />
+                  {/* Animated background gradient on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 to-cyan-500/0 group-hover:from-blue-500/5 group-hover:to-cyan-500/5 transition-all duration-500" />
+                  
+                  <div className="relative z-10">
+                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center mb-4 group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 shadow-lg">
+                      <IconComponent className="text-white" size={24} />
+                    </div>
+                    <h3 className="text-xl font-semibold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors duration-300">
+                      {service.title}
+                    </h3>
+                    <p className="text-slate-600 text-sm line-clamp-3">
+                      {service.description}
+                    </p>
+                    
+                    {/* Arrow indicator */}
+                    <div className="mt-4 flex items-center text-blue-600 font-medium text-sm opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                      <span>Learn more</span>
+                      <ArrowRight size={16} className="ml-1" />
+                    </div>
                   </div>
-                  <h3 className="text-xl font-semibold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors duration-300">
-                    {service.title}
-                  </h3>
-                  <p className="text-slate-600 text-sm line-clamp-3">
-                    {service.description}
-                  </p>
                 </Link>
               );
             })}
@@ -193,7 +205,7 @@ const Home = () => {
           <div className="text-center mt-10">
             <Link
               to="/services"
-              className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transform hover:scale-105 transition-all duration-300"
+              className="magnetic-button inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 hover:shadow-xl transform hover:scale-110 transition-all duration-300"
             >
               View All Services
               <ArrowRight size={20} className="ml-2" />
