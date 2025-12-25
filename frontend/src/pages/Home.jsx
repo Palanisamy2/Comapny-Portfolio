@@ -280,29 +280,38 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-16 lg:py-24 bg-slate-900 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Testimonials with 3D Cards */}
+      <section className="py-16 lg:py-24 bg-slate-900 text-white relative overflow-hidden" id="testimonials" data-animate>
+        {/* Animated background elements */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500 rounded-full blur-3xl animate-float" />
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">
+            <h2 className="text-3xl lg:text-4xl font-bold mb-4 animate-slide-up">
               What Our Clients Say
             </h2>
-            <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+            <p className="text-lg text-slate-400 max-w-2xl mx-auto animate-slide-up" style={{ animationDelay: '0.1s' }}>
               Don't just take our word for it - hear from our satisfied clients
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial) => (
+            {testimonials.map((testimonial, index) => (
               <div
                 key={testimonial.id}
-                className="bg-slate-800 rounded-xl p-6 hover:bg-slate-700 transition-colors duration-300"
+                className="card-3d glass-effect rounded-xl p-6 hover:bg-slate-700/50 transition-all duration-500 border border-white/10 transform hover:scale-105"
+                style={{ animationDelay: `${index * 0.2}s` }}
               >
+                {/* Star Rating with animation */}
                 <div className="flex mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <svg
                       key={i}
-                      className="w-5 h-5 text-yellow-400"
+                      className="w-5 h-5 text-yellow-400 animate-scale-bounce"
+                      style={{ animationDelay: `${i * 0.1}s` }}
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >
@@ -310,13 +319,13 @@ const Home = () => {
                     </svg>
                   ))}
                 </div>
-                <p className="text-slate-300 mb-6 italic">
+                <p className="text-slate-300 mb-6 italic leading-relaxed">
                   "{testimonial.content}"
                 </p>
-                <div>
+                <div className="border-t border-white/10 pt-4">
                   <div className="font-semibold text-white">{testimonial.name}</div>
                   <div className="text-sm text-slate-400">{testimonial.role}</div>
-                  <div className="text-sm text-blue-400">{testimonial.company}</div>
+                  <div className="text-sm text-blue-400 mt-1">{testimonial.company}</div>
                 </div>
               </div>
             ))}
@@ -324,21 +333,30 @@ const Home = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 lg:py-24 bg-gradient-to-r from-blue-600 to-cyan-600">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
+      {/* CTA Section with Gradient Animation */}
+      <section className="py-16 lg:py-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-600 animate-gradient" />
+        
+        {/* Floating shapes */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-10 left-10 w-72 h-72 bg-white rounded-full blur-3xl animate-float" />
+          <div className="absolute bottom-10 right-10 w-72 h-72 bg-white rounded-full blur-3xl animate-float" style={{ animationDelay: '1.5s' }} />
+        </div>
+        
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6 animate-slide-up">
             Ready to Transform Your Business?
           </h2>
-          <p className="text-xl text-blue-100 mb-8">
+          <p className="text-xl text-blue-100 mb-8 animate-slide-up" style={{ animationDelay: '0.1s' }}>
             Let's discuss how we can help you build innovative solutions
           </p>
           <Link
             to="/contact"
-            className="inline-flex items-center px-8 py-4 bg-white text-blue-600 rounded-lg font-semibold hover:bg-blue-50 transform hover:scale-105 hover:shadow-xl transition-all duration-300 group"
+            className="magnetic-button inline-flex items-center px-8 py-4 bg-white text-blue-600 rounded-lg font-semibold hover:bg-blue-50 hover:shadow-2xl transform hover:scale-110 transition-all duration-300 group animate-slide-up"
+            style={{ animationDelay: '0.2s' }}
           >
             Get In Touch
-            <ArrowRight size={20} className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+            <ArrowRight size={20} className="ml-2 group-hover:translate-x-2 transition-transform duration-300" />
           </Link>
         </div>
       </section>
