@@ -214,57 +214,65 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Products Preview */}
-      <section className="py-16 lg:py-24 bg-white">
+      {/* Products Preview with Flip Cards */}
+      <section className="py-16 lg:py-24 bg-white" id="products" data-animate>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
+            <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4 animate-slide-up">
               Our Products
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto animate-slide-up" style={{ animationDelay: '0.1s' }}>
               Innovative SaaS solutions designed to scale your business
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {products.map((product) => (
+            {products.map((product, index) => (
               <div
                 key={product.id}
-                className="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-200 transform hover:-translate-y-2 transition-all duration-300"
+                className="card-3d group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl border border-slate-200 transition-all duration-500"
+                style={{ animationDelay: `${index * 0.15}s` }}
               >
                 <div className="relative h-48 overflow-hidden">
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-full object-cover transform group-hover:scale-125 group-hover:rotate-3 transition-all duration-700"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  
                   <div className="absolute top-4 right-4">
-                    <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                      product.status === 'Live' ? 'bg-green-100 text-green-700' :
-                      product.status === 'Beta' ? 'bg-blue-100 text-blue-700' :
-                      'bg-purple-100 text-purple-700'
+                    <span className={`px-3 py-1 rounded-full text-xs font-semibold shadow-lg transform group-hover:scale-110 transition-transform duration-300 ${
+                      product.status === 'Live' ? 'bg-green-500 text-white animate-pulse-glow' :
+                      product.status === 'Beta' ? 'bg-blue-500 text-white' :
+                      'bg-purple-500 text-white'
                     }`}>
                       {product.status}
                     </span>
                   </div>
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-slate-900 mb-1">
-                    {product.name}
-                  </h3>
-                  <p className="text-sm text-blue-600 font-medium mb-3">
-                    {product.tagline}
-                  </p>
-                  <p className="text-slate-600 text-sm line-clamp-3 mb-4">
-                    {product.description}
-                  </p>
-                  <Link
-                    to="/products"
-                    className="text-blue-600 font-medium text-sm hover:text-blue-700 inline-flex items-center group-hover:translate-x-1 transition-transform duration-300"
-                  >
-                    Learn More
-                    <ArrowRight size={16} className="ml-1" />
-                  </Link>
+                <div className="p-6 relative">
+                  {/* Hover gradient effect */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-50/0 to-cyan-50/0 group-hover:from-blue-50/50 group-hover:to-cyan-50/50 transition-all duration-500 rounded-b-xl" />
+                  
+                  <div className="relative z-10">
+                    <h3 className="text-xl font-semibold text-slate-900 mb-1 group-hover:text-blue-600 transition-colors duration-300">
+                      {product.name}
+                    </h3>
+                    <p className="text-sm text-blue-600 font-medium mb-3">
+                      {product.tagline}
+                    </p>
+                    <p className="text-slate-600 text-sm line-clamp-3 mb-4">
+                      {product.description}
+                    </p>
+                    <Link
+                      to="/products"
+                      className="text-blue-600 font-medium text-sm hover:text-blue-700 inline-flex items-center transform group-hover:translate-x-2 transition-all duration-300"
+                    >
+                      Learn More
+                      <ArrowRight size={16} className="ml-1" />
+                    </Link>
+                  </div>
                 </div>
               </div>
             ))}
