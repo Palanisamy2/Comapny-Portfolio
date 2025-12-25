@@ -73,75 +73,77 @@ const Home = () => {
           }} />
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Hero Content */}
+            {/* Hero Content with Animations */}
             <div className="text-white space-y-6 lg:space-y-8">
-              <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 border border-white/20">
-                <Zap size={16} className="text-cyan-300" />
+              <div className="inline-flex items-center space-x-2 glass-effect rounded-full px-4 py-2 border border-white/20 animate-pulse-glow">
+                <Sparkles size={16} className="text-cyan-300 animate-spin" style={{ animationDuration: '3s' }} />
                 <span className="text-sm font-medium">Innovating Technology Solutions</span>
               </div>
               
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-                {heroContent.title}
+                <span className="inline-block animate-slide-up">{heroContent.title}</span>
               </h1>
               
-              <p className="text-lg sm:text-xl text-blue-100 leading-relaxed max-w-2xl">
+              <p className="text-lg sm:text-xl text-blue-100 leading-relaxed max-w-2xl animate-slide-up" style={{ animationDelay: '0.2s' }}>
                 {heroContent.subtitle}
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <div className="flex flex-col sm:flex-row gap-4 pt-4 fade-in-stagger">
                 <Link
-                  to="/contact"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-white text-blue-600 rounded-lg font-semibold hover:bg-blue-50 transform hover:scale-105 hover:shadow-xl transition-all duration-300 group"
+                  to={heroContent.primaryCTALink}
+                  className="magnetic-button inline-flex items-center justify-center px-8 py-4 bg-white text-blue-600 rounded-lg font-semibold hover:shadow-2xl transform hover:scale-110 transition-all duration-300 group"
                 >
                   {heroContent.primaryCTA}
-                  <ArrowRight size={20} className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+                  <ArrowRight size={20} className="ml-2 group-hover:translate-x-2 transition-transform duration-300" />
                 </Link>
                 <Link
-                  to="/products"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-lg font-semibold hover:bg-white/20 border border-white/30 transform hover:scale-105 transition-all duration-300"
+                  to={heroContent.secondaryCTALink}
+                  className="inline-flex items-center justify-center px-8 py-4 glass-effect text-white rounded-lg font-semibold hover:bg-white/20 border border-white/30 transform hover:scale-105 transition-all duration-300"
                 >
                   {heroContent.secondaryCTA}
                 </Link>
               </div>
 
-              {/* Stats */}
-              <div className="grid grid-cols-3 gap-6 pt-8">
-                <div>
-                  <div className="text-3xl font-bold">50+</div>
-                  <div className="text-blue-200 text-sm">Projects</div>
+              {/* Animated Stats */}
+              {heroContent.showStats && (
+                <div className="grid grid-cols-3 gap-6 pt-8 fade-in-stagger">
+                  {heroContent.stats.map((stat, index) => (
+                    <div key={index} className="transform hover:scale-110 transition-transform duration-300">
+                      <div className="text-3xl font-bold animate-scale-bounce" style={{ animationDelay: `${index * 0.2}s` }}>
+                        {stat.number}
+                      </div>
+                      <div className="text-blue-200 text-sm">{stat.label}</div>
+                    </div>
+                  ))}
                 </div>
-                <div>
-                  <div className="text-3xl font-bold">30+</div>
-                  <div className="text-blue-200 text-sm">Clients</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold">5+</div>
-                  <div className="text-blue-200 text-sm">Years</div>
-                </div>
-              </div>
+              )}
             </div>
 
-            {/* Hero Image */}
+            {/* Hero Image with 3D Tilt Effect */}
             <div className="relative hidden lg:block">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl tilt-effect">
                 <img
                   src={heroContent.heroImage}
                   alt="Team collaboration"
                   className="w-full h-auto"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-blue-900/50 to-transparent" />
+                
+                {/* Animated shimmer overlay */}
+                <div className="absolute inset-0 animate-shimmer" />
               </div>
-              {/* Floating Card */}
-              <div className="absolute -bottom-6 -left-6 bg-white rounded-xl shadow-xl p-4 max-w-xs transform hover:scale-105 transition-transform duration-300">
+              
+              {/* Floating Card with Glass Effect */}
+              <div className="absolute -bottom-6 -left-6 glass-effect rounded-xl shadow-2xl p-4 max-w-xs transform hover:scale-110 transition-all duration-300 animate-float border border-white/20">
                 <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                    <CheckCircle2 className="text-green-600" size={24} />
+                  <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-500 rounded-lg flex items-center justify-center animate-pulse-glow">
+                    <CheckCircle2 className="text-white" size={24} />
                   </div>
                   <div>
-                    <div className="font-semibold text-slate-900">Quality Assured</div>
-                    <div className="text-sm text-slate-600">100% Client Satisfaction</div>
+                    <div className="font-semibold text-white">Quality Assured</div>
+                    <div className="text-sm text-blue-100">100% Client Satisfaction</div>
                   </div>
                 </div>
               </div>
