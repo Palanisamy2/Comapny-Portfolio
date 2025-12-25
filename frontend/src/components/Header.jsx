@@ -39,7 +39,7 @@ const Header = () => {
             <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-lg flex items-center justify-center transform group-hover:scale-105 transition-transform duration-300">
               <span className="text-white font-bold text-xl">GY</span>
             </div>
-            <span className={`font-bold text-lg hidden sm:block transition-colors duration-300 ${
+            <span className={`font-bold text-lg transition-colors duration-300 ${
               isScrolled ? 'text-slate-900' : 'text-white'
             }`}>
               {companyInfo.name.split(' ')[0]}
