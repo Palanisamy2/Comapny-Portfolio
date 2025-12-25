@@ -3,13 +3,12 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
+import About from './pages/About';
+import Services from './pages/Services';
+import Products from './pages/Products';
+import Contact from './pages/Contact';
+import { Toaster } from './components/ui/toaster';
 import './App.css';
-
-// Placeholder components for other pages
-const About = () => <div className="min-h-screen pt-20 px-4"><div className="max-w-7xl mx-auto py-12"><h1 className="text-4xl font-bold">About Page - Coming Soon</h1></div></div>;
-const Services = () => <div className="min-h-screen pt-20 px-4"><div className="max-w-7xl mx-auto py-12"><h1 className="text-4xl font-bold">Services Page - Coming Soon</h1></div></div>;
-const Products = () => <div className="min-h-screen pt-20 px-4"><div className="max-w-7xl mx-auto py-12"><h1 className="text-4xl font-bold">Products Page - Coming Soon</h1></div></div>;
-const Contact = () => <div className="min-h-screen pt-20 px-4"><div className="max-w-7xl mx-auto py-12"><h1 className="text-4xl font-bold">Contact Page - Coming Soon</h1></div></div>;
 
 function App() {
   return (
