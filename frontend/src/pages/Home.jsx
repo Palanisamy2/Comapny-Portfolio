@@ -1,18 +1,75 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Zap, Users, TrendingUp, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, Zap, Users, TrendingUp, CheckCircle2, Sparkles } from 'lucide-react';
 import { heroContent, services, products, testimonials } from '../mock';
 
 const Home = () => {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isVisible, setIsVisible] = useState({});
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    
+    // Intersection Observer for scroll animations
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible((prev) => ({ ...prev, [entry.target.id]: true }));
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    document.querySelectorAll('[data-animate]').forEach((el) => {
+      observer.observe(el);
+    });
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      observer.disconnect();
+    };
+  }, []);
+
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-600 via-blue-700 to-cyan-600 overflow-hidden">
-        {/* Background Pattern */}
+      {/* Hero Section with 3D Effects */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Animated Gradient Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-blue-700 to-cyan-600 animate-gradient" />
+        
+        {/* Floating Geometric Shapes */}
+        <div className="absolute inset-0 overflow-hidden opacity-20">
+          <div 
+            className="absolute w-96 h-96 bg-white rounded-full blur-3xl animate-float"
+            style={{ 
+              top: '10%', 
+              left: '10%',
+              transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px)`
+            }}
+          />
+          <div 
+            className="absolute w-96 h-96 bg-cyan-300 rounded-full blur-3xl animate-float"
+            style={{ 
+              bottom: '10%', 
+              right: '10%',
+              animationDelay: '1s',
+              transform: `translate(${mousePosition.x * -0.02}px, ${mousePosition.y * -0.02}px)`
+            }}
+          />
+        </div>
+        
+        {/* Grid Pattern with 3D effect */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
             backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
-            backgroundSize: '40px 40px'
+            backgroundSize: '40px 40px',
+            transform: 'perspective(1000px) rotateX(60deg)',
+            transformOrigin: 'center center'
           }} />
         </div>
 
