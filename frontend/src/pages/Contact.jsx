@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, Loader2 } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 import { companyInfo } from '../mock';
 import { useToast } from '../hooks/use-toast';
 
@@ -36,18 +37,32 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-      const response = await fetch(`${BACKEND_URL}/api/contact`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      // EmailJS configuration
+      const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID || '';
+      const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID || '';
+      const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY || '';
 
-      const data = await response.json();
+      if (!serviceId || !templateId || !publicKey) {
+        throw new Error('EmailJS configuration is missing. Please check your environment variables.');
+      }
 
-      if (response.ok) {
+      // Initialize EmailJS
+      emailjs.init(publicKey);
+
+      // Send email using EmailJS
+      const result = await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          to_email: 'palanisamy20044@gmail.com',
+        }
+      );
+
+      if (result.text === 'OK') {
         toast({
           title: 'Success!',
           description: 'Thank you for contacting us. We will get back to you soon!',
@@ -61,7 +76,7 @@ const Contact = () => {
           message: ''
         });
       } else {
-        throw new Error(data.detail || 'Failed to send message');
+        throw new Error('Failed to send message');
       }
     } catch (error) {
       toast({
