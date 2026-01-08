@@ -138,12 +138,17 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-slate-900 mb-1">Phone</h3>
-                    <a
-                      href={`tel:${companyInfo.phone}`}
-                      className="text-slate-600 hover:text-cyan-600 transition-colors duration-300"
-                    >
-                      {companyInfo.phone}
-                    </a>
+                    <div className="space-y-1">
+                      {(companyInfo.phones || [companyInfo.phone]).map((phone, index) => (
+                        <a
+                          key={index}
+                          href={`tel:${phone}`}
+                          className="block text-slate-600 hover:text-cyan-600 transition-colors duration-300"
+                        >
+                          {phone}
+                        </a>
+                      ))}
+                    </div>
                   </div>
                 </div>
 

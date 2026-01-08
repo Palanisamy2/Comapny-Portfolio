@@ -3,9 +3,13 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { companyInfo } from '../mock';
 
+// Import logo image
+import logoImage from './images/logo.jpg';
+
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [logoError, setLogoError] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -36,14 +40,34 @@ const Header = () => {
         <div className="flex justify-between items-center h-16 lg:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 group">
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-lg flex items-center justify-center transform group-hover:scale-105 transition-transform duration-300">
-              <span className="text-white font-bold text-xl">GY</span>
-            </div>
-            <span className={`font-bold text-lg transition-colors duration-300 ${
-              isScrolled ? 'text-slate-900' : 'text-white'
-            }`}>
-              {companyInfo.name.split(' ')[0]}
-            </span>
+            {!logoError ? (
+              <>
+                <div className="h-14 w-14 rounded-lg bg-gradient-to-br from-blue-50 to-cyan-50 p-2 shadow-sm transform group-hover:scale-105 transition-transform duration-300">
+                  <img 
+                    src={logoImage} 
+                    alt="GenYuga Logo" 
+                    className="h-full w-full object-contain rounded-md"
+                    onError={() => setLogoError(true)}
+                  />
+                </div>
+                <span className={`font-bold text-base transition-colors duration-300 ${
+                  isScrolled ? 'text-slate-900' : 'text-white'
+                }`}>
+                  GenYuga
+                </span>
+              </>
+            ) : (
+              <div className="flex items-center space-x-2">
+                <div className="w-14 h-14 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-lg flex items-center justify-center transform group-hover:scale-105 transition-transform duration-300">
+                  <span className="text-white font-bold text-2xl">GY</span>
+                </div>
+                <span className={`font-bold text-base transition-colors duration-300 ${
+                  isScrolled ? 'text-slate-900' : 'text-white'
+                }`}>
+                  GenYuga
+                </span>
+              </div>
+            )}
           </Link>
 
           {/* Desktop Navigation */}

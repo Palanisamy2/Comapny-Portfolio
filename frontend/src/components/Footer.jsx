@@ -31,7 +31,7 @@ const Footer = () => {
               <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-xl">GY</span>
               </div>
-              <span className="font-bold text-lg">{companyInfo.name.split(' ')[0]}</span>
+              <span className="font-bold text-lg">{companyInfo.name}</span>
             </div>
             <p className="text-slate-400 text-sm leading-relaxed">
               Building innovative EdTech solutions, custom software, and scalable SaaS products that transform businesses and education.
@@ -113,12 +113,17 @@ const Footer = () => {
               </li>
               <li className="flex items-start space-x-3">
                 <Phone size={18} className="text-cyan-400 mt-0.5 flex-shrink-0" />
-                <a
-                  href={`tel:${companyInfo.phone}`}
-                  className="text-slate-400 hover:text-white text-sm transition-colors duration-300"
-                >
-                  {companyInfo.phone}
-                </a>
+                <div className="space-y-1">
+                  {(companyInfo.phones || [companyInfo.phone]).map((phone, index) => (
+                    <a
+                      key={index}
+                      href={`tel:${phone}`}
+                      className="block text-slate-400 hover:text-white text-sm transition-colors duration-300"
+                    >
+                      {phone}
+                    </a>
+                  ))}
+                </div>
               </li>
               <li className="flex items-start space-x-3">
                 <MapPin size={18} className="text-purple-400 mt-0.5 flex-shrink-0" />

@@ -9,9 +9,10 @@ export const companyInfo = {
   name: "GenYuga Software Private Limited",
   tagline: "Innovating Tomorrow's Technology, Today",
   description: "We build cutting-edge EdTech solutions, custom software, and scalable SaaS products that transform businesses and education.",
-  email: "contact@genyuga.com",
-  phone: "+91 98765 43210",
-  address: "Bangalore, Karnataka, India",
+  email: "contact.genyuga@gmail.com",
+  phone: "+91 6382726436",
+  phones: ["+91 6382726436", "+91 8807480254"], // Multiple phone numbers
+  address: "Salem, Tamilnadu, India",
   
   // Social Media Links
   social: {
@@ -170,50 +171,44 @@ export const products = [
     id: 1,
     name: "EduFlow",
     tagline: "Learning Management Made Simple",
-    description: "A comprehensive LMS platform that streamlines course creation, student management, and progress tracking. Perfect for educational institutions and corporate training.",
+    description: "EduFlow is a comprehensive, enterprise-grade Learning Management System (LMS) designed for educational institutions, training providers, and corporates. It streamlines course delivery, event management, payments, task evaluation, and certificate automation in a single secure platform. EduFlow is built to handle courses, workshops, internships, and custom learning events with strict role separation, automated workflows, and full auditability.",
     category: "EdTech",
     status: "Live", // Options: "Live", "Beta", "Coming Soon"
     image: "https://images.pexels.com/photos/4145347/pexels-photo-4145347.jpeg",
     features: [
-      "Intuitive Course Builder",
-      "Real-time Progress Tracking",
-      "Integrated Video Conferencing",
-      "Automated Assessments",
-      "Mobile-First Design"
+      "Role-Based Access Control (RBAC) with Super Admin, Event Manager, Finance Manager, Task Reviewer, and Read-Only Admin roles",
+      "Separate authentication systems for Admin (internal only) and Student/Participant (public registration)",
+      "Comprehensive Event Management supporting Courses, Workshops, Internships, and custom event types",
+      "Automated Razorpay Payment Integration with full/partial payment support and webhook verification",
+      "Task Management & Verification system with screenshot uploads and GitHub repository links",
+      "Automated Certificate Issuance based on 70% task completion and full payment eligibility",
+      "Real-time Metrics & Dashboards for enrollments, payments, task completion, and certificates",
+      "Complete Audit Logs with immutable change history visible only to Super Admin",
+      "Automated Payment Reminders sent 3 days and 2 days before event end",
+      "MVC Architecture with RESTful APIs, Sequelize ORM, and secure JWT-based authentication"
     ],
     demoLink: "#", // Optional
-    price: "Starting at $99/month" // Optional
+    price: "Enterprise Pricing Available" // Optional
   },
   {
     id: 2,
-    name: "CloudDesk Pro",
-    tagline: "Project Management Reimagined",
-    description: "A powerful project management and collaboration tool designed for remote teams. Track tasks, manage resources, and boost productivity.",
-    category: "SaaS",
-    status: "Beta",
+    name: "AuraCart AI",
+    tagline: "AI-Powered Personalized Beauty & Fashion Commerce",
+    description: "AuraCart AI is an advanced AI-driven eCommerce platform that delivers hyper-personalized product recommendations based on skin tone detection, facial analysis, user preferences, and event context. It enables brands and businesses to offer camera-based product matching, making shopping more accurate, inclusive, and conversion-focused.",
+    category: "AI Commerce",
+    status: "Live",
     image: "https://images.pexels.com/photos/257904/pexels-photo-257904.jpeg",
     features: [
-      "Kanban & Gantt Views",
-      "Time Tracking & Reporting",
-      "Team Collaboration Tools",
-      "Resource Management",
-      "Custom Workflows"
-    ]
-  },
-  {
-    id: 3,
-    name: "DataViz Analytics",
-    tagline: "Transform Data into Insights",
-    description: "An advanced analytics platform that helps businesses make data-driven decisions. Beautiful dashboards, powerful insights, seamless integrations.",
-    category: "SaaS",
-    status: "Coming Soon",
-    image: "https://images.pexels.com/photos/577195/pexels-photo-577195.jpeg",
-    features: [
-      "Custom Dashboard Builder",
-      "Real-time Data Processing",
-      "Advanced Visualizations",
-      "API Integrations",
-      "Predictive Analytics"
+      "AI Skin Tone Detection using device camera with user consent for accurate product matching",
+      "Personalized Product Recommendations based on detected skin tone, event context (Wedding, Party, Office, Festival, Casual), and user preferences",
+      "LLM-Powered Shopping Assistant for conversational product guidance and recommendations",
+      "Event-Based Styling with context-aware suggestions for makeup, outfits, and skincare products",
+      "Smart eCommerce Capabilities including product catalog management, dynamic recommendations, and real-time AI-driven filtering",
+      "Mobile-First UI optimized for camera usage and seamless shopping experience",
+      "Client-Ready White-Label Solution with custom branding for beauty, fashion, and lifestyle brands",
+      "Secure Checkout & Order Tracking with complete eCommerce functionality",
+      "Higher Conversion Rates through accurate product matching and reduced returns",
+      "Scalable Platform suitable for beauty brands, fashion retailers, D2C brands, and agencies"
     ]
   }
   
