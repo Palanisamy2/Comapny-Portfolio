@@ -42,11 +42,11 @@ const Header = () => {
           <Link to="/" className="flex items-center space-x-2 group">
             {!logoError ? (
               <>
-                <div className="h-14 w-14 rounded-lg bg-gradient-to-br from-blue-50 to-cyan-50 p-2 shadow-sm transform group-hover:scale-105 transition-transform duration-300">
+                <div className="h-14 w-14 transform group-hover:scale-105 transition-transform duration-300 drop-shadow-md">
                   <img 
                     src={logoImage} 
                     alt="GenYuga Logo" 
-                    className="h-full w-full object-contain rounded-md"
+                    className="h-full w-full object-contain"
                     onError={() => setLogoError(true)}
                   />
                 </div>
@@ -79,10 +79,10 @@ const Header = () => {
                 className={`text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 ${
                   isActive(link.path)
                     ? isScrolled
-                      ? 'text-blue-600'
+                      ? 'text-primary'
                       : 'text-white font-semibold'
                     : isScrolled
-                    ? 'text-slate-700 hover:text-blue-600'
+                    ? 'text-slate-700 hover:text-primary'
                     : 'text-white/90 hover:text-white'
                 }`}
               >
@@ -94,7 +94,7 @@ const Header = () => {
           {/* CTA Button - Desktop */}
           <Link
             to="/contact"
-            className="hidden md:block px-6 py-2.5 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transform hover:scale-105 hover:shadow-lg transition-all duration-300"
+            className="hidden md:block px-6 py-2.5 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transform hover:scale-105 hover:shadow-lg transition-all duration-300"
           >
             Get Started
           </Link>
@@ -122,7 +122,7 @@ const Header = () => {
                 onClick={() => setIsMobileMenuOpen(false)}
                 className={`block px-4 py-2.5 rounded-lg font-medium transition-colors duration-300 ${
                   isActive(link.path)
-                    ? 'bg-blue-50 text-blue-600'
+                    ? 'bg-primary/10 text-primary'
                     : 'text-slate-700 hover:bg-slate-50'
                 }`}
               >
@@ -132,7 +132,7 @@ const Header = () => {
             <Link
               to="/contact"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="block px-4 py-2.5 bg-blue-600 text-white rounded-lg font-medium text-center hover:bg-blue-700 transition-colors duration-300"
+              className="block px-4 py-2.5 bg-primary text-primary-foreground rounded-lg font-medium text-center hover:bg-primary/90 transition-colors duration-300"
             >
               Get Started
             </Link>

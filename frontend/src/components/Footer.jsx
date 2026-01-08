@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, Linkedin, Twitter, Github } from 'lucide-react';
 import { companyInfo } from '../mock';
 
+// Import logo image
+import logoImage from './images/logo.jpg';
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const [logoError, setLogoError] = useState(false);
 
   const quickLinks = [
     { name: 'Home', path: '/' },
@@ -28,9 +32,20 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">GY</span>
-              </div>
+              {!logoError ? (
+                <div className="h-10 w-10 drop-shadow-md">
+                  <img 
+                    src={logoImage} 
+                    alt="GenYuga Logo" 
+                    className="h-full w-full object-contain"
+                    onError={() => setLogoError(true)}
+                  />
+                </div>
+              ) : (
+                <div className="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
+                  <span className="text-white font-bold text-xl">GY</span>
+                </div>
+              )}
               <span className="font-bold text-lg">{companyInfo.name}</span>
             </div>
             <p className="text-slate-400 text-sm leading-relaxed">
@@ -41,7 +56,7 @@ const Footer = () => {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-lg bg-slate-800 hover:bg-blue-600 flex items-center justify-center transition-all duration-300 hover:scale-110"
+                className="w-9 h-9 rounded-lg bg-slate-800 hover:bg-primary flex items-center justify-center transition-all duration-300 hover:scale-110"
               >
                 <Linkedin size={18} />
               </a>
@@ -49,7 +64,7 @@ const Footer = () => {
                 href="https://twitter.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-lg bg-slate-800 hover:bg-cyan-500 flex items-center justify-center transition-all duration-300 hover:scale-110"
+                className="w-9 h-9 rounded-lg bg-slate-800 hover:bg-secondary flex items-center justify-center transition-all duration-300 hover:scale-110"
               >
                 <Twitter size={18} />
               </a>

@@ -40,7 +40,7 @@ const Home = () => {
       {/* Hero Section with 3D Effects */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Animated Gradient Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-blue-700 to-cyan-600 animate-gradient" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/90 to-secondary animate-gradient" />
         
         {/* Floating Geometric Shapes */}
         <div className="absolute inset-0 overflow-hidden opacity-20">
@@ -53,7 +53,7 @@ const Home = () => {
             }}
           />
           <div 
-            className="absolute w-96 h-96 bg-cyan-300 rounded-full blur-3xl animate-float"
+            className="absolute w-96 h-96 bg-accent rounded-full blur-3xl animate-float"
             style={{ 
               bottom: '10%', 
               right: '10%',
@@ -78,7 +78,7 @@ const Home = () => {
             {/* Hero Content with Animations */}
             <div className="text-white space-y-6 lg:space-y-8">
               <div className="inline-flex items-center space-x-2 glass-effect rounded-full px-4 py-2 border border-white/20 animate-pulse-glow">
-                <Sparkles size={16} className="text-cyan-300 animate-spin" style={{ animationDuration: '3s' }} />
+                <Sparkles size={16} className="text-accent animate-spin" style={{ animationDuration: '3s' }} />
                 <span className="text-sm font-medium">Innovating Technology Solutions</span>
               </div>
               
@@ -86,14 +86,14 @@ const Home = () => {
                 <span className="inline-block animate-slide-up">{heroContent.title}</span>
               </h1>
               
-              <p className="text-lg sm:text-xl text-blue-100 leading-relaxed max-w-2xl animate-slide-up" style={{ animationDelay: '0.2s' }}>
+              <p className="text-lg sm:text-xl text-primary-foreground/80 leading-relaxed max-w-2xl animate-slide-up" style={{ animationDelay: '0.2s' }}>
                 {heroContent.subtitle}
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 pt-4 fade-in-stagger">
                 <Link
                   to={heroContent.primaryCTALink}
-                  className="magnetic-button inline-flex items-center justify-center px-8 py-4 bg-white text-blue-600 rounded-lg font-semibold hover:shadow-2xl transform hover:scale-110 transition-all duration-300 group"
+                  className="magnetic-button inline-flex items-center justify-center px-8 py-4 bg-white text-primary rounded-lg font-semibold hover:shadow-2xl transform hover:scale-110 transition-all duration-300 group"
                 >
                   {heroContent.primaryCTA}
                   <ArrowRight size={20} className="ml-2 group-hover:translate-x-2 transition-transform duration-300" />
@@ -114,7 +114,7 @@ const Home = () => {
                       <div className="text-3xl font-bold animate-scale-bounce" style={{ animationDelay: `${index * 0.2}s` }}>
                         {stat.number}
                       </div>
-                      <div className="text-blue-200 text-sm">{stat.label}</div>
+                      <div className="text-primary-foreground/60 text-sm">{stat.label}</div>
                     </div>
                   ))}
                 </div>
@@ -129,7 +129,7 @@ const Home = () => {
                   alt="Team collaboration"
                   className="w-full h-auto"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-blue-900/50 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/50 to-transparent" />
                 
                 {/* Animated shimmer overlay */}
                 <div className="absolute inset-0 animate-shimmer" />
@@ -138,12 +138,12 @@ const Home = () => {
               {/* Floating Card with Glass Effect */}
               <div className="absolute -bottom-6 -left-6 glass-effect rounded-xl shadow-2xl p-4 max-w-xs transform hover:scale-110 transition-all duration-300 animate-float border border-white/20">
                 <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-500 rounded-lg flex items-center justify-center animate-pulse-glow">
+                  <div className="w-12 h-12 bg-gradient-to-br from-accent to-accent/80 rounded-lg flex items-center justify-center animate-pulse-glow">
                     <CheckCircle2 className="text-white" size={24} />
                   </div>
                   <div>
                     <div className="font-semibold text-white">Quality Assured</div>
-                    <div className="text-sm text-blue-100">100% Client Satisfaction</div>
+                    <div className="text-sm text-white/80">100% Client Satisfaction</div>
                   </div>
                 </div>
               </div>
@@ -178,13 +178,13 @@ const Home = () => {
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   {/* Animated background gradient on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 to-cyan-500/0 group-hover:from-blue-500/5 group-hover:to-cyan-500/5 transition-all duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-accent/0 group-hover:from-primary/5 group-hover:to-accent/5 transition-all duration-500" />
                   
                   <div className="relative z-10">
-                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center mb-4 group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 shadow-lg">
+                    <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center mb-4 group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 shadow-lg">
                       <IconComponent className="text-white" size={24} />
                     </div>
-                    <h3 className="text-xl font-semibold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors duration-300">
+                    <h3 className="text-xl font-semibold text-slate-900 mb-2 group-hover:text-primary transition-colors duration-300">
                       {service.title}
                     </h3>
                     <p className="text-slate-600 text-sm line-clamp-3">
@@ -192,7 +192,7 @@ const Home = () => {
                     </p>
                     
                     {/* Arrow indicator */}
-                    <div className="mt-4 flex items-center text-blue-600 font-medium text-sm opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                    <div className="mt-4 flex items-center text-primary font-medium text-sm opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
                       <span>Learn more</span>
                       <ArrowRight size={16} className="ml-1" />
                     </div>
@@ -205,7 +205,7 @@ const Home = () => {
           <div className="text-center mt-10">
             <Link
               to="/services"
-              className="magnetic-button inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 hover:shadow-xl transform hover:scale-110 transition-all duration-300"
+              className="magnetic-button inline-flex items-center px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 hover:shadow-xl transform hover:scale-110 transition-all duration-300"
             >
               View All Services
               <ArrowRight size={20} className="ml-2" />
@@ -243,9 +243,9 @@ const Home = () => {
                   
                   <div className="absolute top-4 right-4">
                     <span className={`px-3 py-1 rounded-full text-xs font-semibold shadow-lg transform group-hover:scale-110 transition-transform duration-300 ${
-                      product.status === 'Live' ? 'bg-green-500 text-white animate-pulse-glow' :
-                      product.status === 'Beta' ? 'bg-blue-500 text-white' :
-                      'bg-purple-500 text-white'
+                      product.status === 'Live' ? 'bg-accent text-white animate-pulse-glow' :
+                      product.status === 'Beta' ? 'bg-primary text-white' :
+                      'bg-secondary text-white'
                     }`}>
                       {product.status}
                     </span>
@@ -253,13 +253,13 @@ const Home = () => {
                 </div>
                 <div className="p-6 relative">
                   {/* Hover gradient effect */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-50/0 to-cyan-50/0 group-hover:from-blue-50/50 group-hover:to-cyan-50/50 transition-all duration-500 rounded-b-xl" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-accent/0 group-hover:from-primary/5 group-hover:to-accent/5 transition-all duration-500 rounded-b-xl" />
                   
                   <div className="relative z-10">
-                    <h3 className="text-xl font-semibold text-slate-900 mb-1 group-hover:text-blue-600 transition-colors duration-300">
+                    <h3 className="text-xl font-semibold text-slate-900 mb-1 group-hover:text-primary transition-colors duration-300">
                       {product.name}
                     </h3>
-                    <p className="text-sm text-blue-600 font-medium mb-3">
+                    <p className="text-sm text-primary font-medium mb-3">
                       {product.tagline}
                     </p>
                     <p className="text-slate-600 text-sm line-clamp-3 mb-4">
@@ -267,7 +267,7 @@ const Home = () => {
                     </p>
                     <Link
                       to="/products"
-                      className="text-blue-600 font-medium text-sm hover:text-blue-700 inline-flex items-center transform group-hover:translate-x-2 transition-all duration-300"
+                      className="text-primary font-medium text-sm hover:text-primary/80 inline-flex items-center transform group-hover:translate-x-2 transition-all duration-300"
                     >
                       Learn More
                       <ArrowRight size={16} className="ml-1" />
@@ -284,8 +284,8 @@ const Home = () => {
       <section className="py-16 lg:py-24 bg-slate-900 text-white relative overflow-hidden" id="testimonials" data-animate>
         {/* Animated background elements */}
         <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500 rounded-full blur-3xl animate-float" />
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+          <div className="absolute top-0 left-0 w-96 h-96 bg-primary rounded-full blur-3xl animate-float" />
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-secondary rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
         </div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -325,7 +325,7 @@ const Home = () => {
                 <div className="border-t border-white/10 pt-4">
                   <div className="font-semibold text-white">{testimonial.name}</div>
                   <div className="text-sm text-slate-400">{testimonial.role}</div>
-                  <div className="text-sm text-blue-400 mt-1">{testimonial.company}</div>
+                  <div className="text-sm text-primary mt-1">{testimonial.company}</div>
                 </div>
               </div>
             ))}
@@ -335,7 +335,7 @@ const Home = () => {
 
       {/* CTA Section with Gradient Animation */}
       <section className="py-16 lg:py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-600 animate-gradient" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-primary animate-gradient" />
         
         {/* Floating shapes */}
         <div className="absolute inset-0 opacity-20">
@@ -347,12 +347,12 @@ const Home = () => {
           <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6 animate-slide-up">
             Ready to Transform Your Business?
           </h2>
-          <p className="text-xl text-blue-100 mb-8 animate-slide-up" style={{ animationDelay: '0.1s' }}>
+          <p className="text-xl text-primary-foreground/90 mb-8 animate-slide-up" style={{ animationDelay: '0.1s' }}>
             Let's discuss how we can help you build innovative solutions
           </p>
           <Link
             to="/contact"
-            className="magnetic-button inline-flex items-center px-8 py-4 bg-white text-blue-600 rounded-lg font-semibold hover:bg-blue-50 hover:shadow-2xl transform hover:scale-110 transition-all duration-300 group animate-slide-up"
+            className="magnetic-button inline-flex items-center px-8 py-4 bg-white text-primary rounded-lg font-semibold hover:bg-slate-50 hover:shadow-2xl transform hover:scale-110 transition-all duration-300 group animate-slide-up"
             style={{ animationDelay: '0.2s' }}
           >
             Get In Touch

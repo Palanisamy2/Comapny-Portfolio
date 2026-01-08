@@ -92,12 +92,12 @@ const Contact = () => {
   return (
     <div className="min-h-screen pt-20">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-600 via-blue-700 to-cyan-600 text-white py-16 lg:py-24">
+      <section className="bg-gradient-to-br from-primary via-primary/90 to-secondary text-white py-16 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl lg:text-5xl font-bold mb-6">
             Get In Touch
           </h1>
-          <p className="text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-primary-foreground/80 max-w-3xl mx-auto leading-relaxed">
             Have a project in mind? Let's discuss how we can help you achieve your goals
           </p>
         </div>
@@ -118,14 +118,14 @@ const Contact = () => {
 
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Mail className="text-blue-600" size={24} />
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Mail className="text-primary" size={24} />
                   </div>
                   <div>
                     <h3 className="font-semibold text-slate-900 mb-1">Email</h3>
                     <a
                       href={`mailto:${companyInfo.email}`}
-                      className="text-slate-600 hover:text-blue-600 transition-colors duration-300"
+                      className="text-slate-600 hover:text-primary transition-colors duration-300"
                     >
                       {companyInfo.email}
                     </a>
@@ -133,8 +133,8 @@ const Contact = () => {
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-cyan-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Phone className="text-cyan-600" size={24} />
+                  <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Phone className="text-secondary" size={24} />
                   </div>
                   <div>
                     <h3 className="font-semibold text-slate-900 mb-1">Phone</h3>
@@ -143,7 +143,7 @@ const Contact = () => {
                         <a
                           key={index}
                           href={`tel:${phone}`}
-                          className="block text-slate-600 hover:text-cyan-600 transition-colors duration-300"
+                          className="block text-slate-600 hover:text-secondary transition-colors duration-300"
                         >
                           {phone}
                         </a>
@@ -153,8 +153,8 @@ const Contact = () => {
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <MapPin className="text-purple-600" size={24} />
+                  <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <MapPin className="text-accent" size={24} />
                   </div>
                   <div>
                     <h3 className="font-semibold text-slate-900 mb-1">Location</h3>
@@ -257,7 +257,7 @@ const Contact = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full px-6 py-4 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center space-x-2"
+                  className="w-full px-6 py-4 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center space-x-2"
                 >
                   {isSubmitting ? (
                     <>
