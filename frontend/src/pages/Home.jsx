@@ -78,7 +78,7 @@ const Home = () => {
             {/* Hero Content with Animations */}
             <div className="text-white space-y-6 lg:space-y-8">
               <div className="inline-flex items-center space-x-2 glass-effect rounded-full px-4 py-2 border border-white/20 animate-pulse-glow">
-                <Sparkles size={16} className="text-accent animate-spin" style={{ animationDuration: '3s' }} />
+                <Sparkles size={16} className="text-secondary animate-spin" style={{ animationDuration: '3s' }} />
                 <span className="text-sm font-medium">Innovating Technology Solutions</span>
               </div>
               

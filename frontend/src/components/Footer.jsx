@@ -4,7 +4,7 @@ import { Mail, Phone, MapPin, Linkedin, Twitter, Github } from 'lucide-react';
 import { companyInfo } from '../mock';
 
 // Import logo image
-import logoImage from './images/logo.jpg';
+import logoImage from './images/Asset 1.png';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -31,22 +31,24 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Company Info */}
           <div className="space-y-4">
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center">
               {!logoError ? (
-                <div className="h-10 w-10 drop-shadow-md">
+                <div className="h-11 w-auto min-w-[120px] ">
                   <img 
                     src={logoImage} 
                     alt="GenYuga Logo" 
-                    className="h-full w-full object-contain"
+                    className="h-full w-full object-contain object-left"
                     onError={() => setLogoError(true)}
                   />
                 </div>
               ) : (
-                <div className="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-xl">GY</span>
+                <div className="flex items-center space-x-2">
+                  <div className="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
+                    <span className="text-white font-bold text-xl">GY</span>
+                  </div>
+                  <span className="font-bold text-lg">{companyInfo.name}</span>
                 </div>
               )}
-              <span className="font-bold text-lg">{companyInfo.name}</span>
             </div>
             <p className="text-slate-400 text-sm leading-relaxed">
               Building innovative EdTech solutions, custom software, and scalable SaaS products that transform businesses and education.

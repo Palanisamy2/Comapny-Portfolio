@@ -4,13 +4,14 @@ import { Menu, X } from 'lucide-react';
 import { companyInfo } from '../mock';
 
 // Import logo image
-import logoImage from './images/logo.jpg';
+import logoImage from './images/Asset 1.png';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [logoError, setLogoError] = useState(false);
   const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,39 +31,35 @@ const Header = () => {
 
   const isActive = (path) => location.pathname === path;
 
+  // Header is transparent ONLY at the top of the Home page
+  const isTransparent = isHomePage && !isScrolled;
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white/95 backdrop-blur-md shadow-md' : 'bg-transparent'
+        isTransparent ? 'bg-transparent' : 'bg-white/95 backdrop-blur-md shadow-md'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 lg:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 group">
+          <Link to="/" className="flex items-center group">
             {!logoError ? (
-              <>
-                <div className="h-14 w-14 transform group-hover:scale-105 transition-transform duration-300 drop-shadow-md">
-                  <img 
-                    src={logoImage} 
-                    alt="GenYuga Logo" 
-                    className="h-full w-full object-contain"
-                    onError={() => setLogoError(true)}
-                  />
-                </div>
-                <span className={`font-bold text-base transition-colors duration-300 ${
-                  isScrolled ? 'text-slate-900' : 'text-white'
-                }`}>
-                  GenYuga
-                </span>
-              </>
+              <div className="h-12 lg:h-14 w-auto min-w-[120px] transform group-hover:scale-105 transition-transform duration-300 drop-shadow-md">
+                <img 
+                  src={logoImage} 
+                  alt="GenYuga Logo" 
+                  className="h-full w-full object-contain object-left"
+                  onError={() => setLogoError(true)}
+                />
+              </div>
             ) : (
               <div className="flex items-center space-x-2">
                 <div className="w-14 h-14 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-lg flex items-center justify-center transform group-hover:scale-105 transition-transform duration-300">
                   <span className="text-white font-bold text-2xl">GY</span>
                 </div>
-                <span className={`font-bold text-base transition-colors duration-300 ${
-                  isScrolled ? 'text-slate-900' : 'text-white'
+                <span className={`font-bold text-lg transition-colors duration-300 ${
+                  isTransparent ? 'text-white' : 'text-slate-900'
                 }`}>
                   GenYuga
                 </span>
@@ -78,12 +75,12 @@ const Header = () => {
                 to={link.path}
                 className={`text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 ${
                   isActive(link.path)
-                    ? isScrolled
-                      ? 'text-primary'
-                      : 'text-white font-semibold'
-                    : isScrolled
-                    ? 'text-slate-700 hover:text-primary'
-                    : 'text-white/90 hover:text-white'
+                    ? isTransparent
+                      ? 'text-white font-semibold'
+                      : 'text-primary font-semibold'
+                    : isTransparent
+                    ? 'text-white/90 hover:text-white'
+                    : 'text-slate-700 hover:text-primary'
                 }`}
               >
                 {link.name}
@@ -94,7 +91,11 @@ const Header = () => {
           {/* CTA Button - Desktop */}
           <Link
             to="/contact"
-            className="hidden md:block px-6 py-2.5 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transform hover:scale-105 hover:shadow-lg transition-all duration-300"
+            className={`hidden md:block px-6 py-2.5 rounded-lg font-medium transform hover:scale-105 hover:shadow-lg transition-all duration-300 ${
+              isTransparent
+                ? 'bg-white text-primary hover:bg-white/90'
+                : 'bg-primary text-primary-foreground hover:bg-primary/90'
+            }`}
           >
             Get Started
           </Link>
@@ -103,7 +104,7 @@ const Header = () => {
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className={`md:hidden p-2 rounded-lg transition-colors duration-300 ${
-              isScrolled ? 'text-slate-900 hover:bg-slate-100' : 'text-white hover:bg-white/10'
+              isTransparent ? 'text-white hover:bg-white/10' : 'text-slate-900 hover:bg-slate-100'
             }`}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
