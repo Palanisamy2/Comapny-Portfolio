@@ -11,14 +11,14 @@ export const companyInfo = {
   description: "We build cutting-edge EdTech solutions, custom software, and scalable SaaS products that transform businesses and education.",
   email: "contact.genyuga@gmail.com",
   phone: "+91 6382726436",
-  phones: ["+91 6382726436", "+91 8807480254"], // Multiple phone numbers
+  phones: ["+91 6382726436", "+91 8807480254", "+91 8903265089"], // Multiple phone numbers
   address: "Salem, Tamilnadu, India",
   
   // Social Media Links
   social: {
-    linkedin: "https://linkedin.com",
+    linkedin: "https://www.linkedin.com/company/genyuga-software-private-limited/",
     twitter: "https://twitter.com",
-    github: "https://github.com",
+    github: "https://github.com/GenYuga",
     facebook: "https://facebook.com",
     instagram: "https://instagram.com"
   }

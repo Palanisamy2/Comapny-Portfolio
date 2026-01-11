@@ -33,11 +33,11 @@ const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center">
               {!logoError ? (
-                <div className="h-11 w-auto min-w-[120px] ">
+                <div className="h-14 w-auto min-w-[140px] bg-white rounded-xl p-2.5 shadow-lg transform hover:scale-105 transition-transform duration-300">
                   <img 
                     src={logoImage} 
                     alt="GenYuga Logo" 
-                    className="h-full w-full object-contain object-left"
+                    className="h-full w-full object-contain"
                     onError={() => setLogoError(true)}
                   />
                 </div>
@@ -55,7 +55,7 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               <a
-                href="https://linkedin.com"
+                href={companyInfo.social.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-lg bg-slate-800 hover:bg-primary flex items-center justify-center transition-all duration-300 hover:scale-110"
@@ -63,7 +63,7 @@ const Footer = () => {
                 <Linkedin size={18} />
               </a>
               <a
-                href="https://twitter.com"
+                href={companyInfo.social.twitter}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-lg bg-slate-800 hover:bg-secondary flex items-center justify-center transition-all duration-300 hover:scale-110"
@@ -71,7 +71,7 @@ const Footer = () => {
                 <Twitter size={18} />
               </a>
               <a
-                href="https://github.com"
+                href={companyInfo.social.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-lg bg-slate-800 hover:bg-slate-700 flex items-center justify-center transition-all duration-300 hover:scale-110"
@@ -151,7 +151,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-slate-800">
+        <div className="mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-slate-400 text-sm">
               © {currentYear} {companyInfo.name}. All rights reserved.

@@ -63,15 +63,8 @@ const Home = () => {
           />
         </div>
         
-        {/* Grid Pattern with 3D effect */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
-            backgroundSize: '40px 40px',
-            transform: 'perspective(1000px) rotateX(60deg)',
-            transformOrigin: 'center center'
-          }} />
-        </div>
+        {/* Grid Pattern removed as requested */}
+        <div className="absolute inset-0 opacity-10" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -226,11 +219,11 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="flex flex-wrap justify-center gap-8">
             {products.map((product, index) => (
               <div
                 key={product.id}
-                className="card-3d group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl border border-slate-200 transition-all duration-500"
+                className="card-3d group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl border border-slate-200 transition-all duration-500 w-full md:w-[calc(50%-2rem)] lg:w-[calc(33.333%-2rem)] max-w-sm"
                 style={{ animationDelay: `${index * 0.15}s` }}
               >
                 <div className="relative h-48 overflow-hidden">
